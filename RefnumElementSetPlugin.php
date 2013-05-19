@@ -6,47 +6,46 @@
  * @note Are added only metadata that can't be replaced by a Dublin Core element
  * and that are useful for École des Ponts.
  *
- * @copyright Daniel Berthereau for École des Ponts ParisTech, 2012
+ * @copyright Daniel Berthereau, 2012-2013
  * @license http://www.cecill.info/licences/Licence_CeCILL_V2-en.txt
+ * @see http://bibnum.bnf.fr/refNum
  * @package RefnumElementSet
  **/
 
-class RefnumElementSetPlugin extends Omeka_Plugin_Abstract
+class RefnumElementSetPlugin extends Omeka_Plugin_AbstractPlugin
 {
-    const ELEMENT_SET_NAME = 'refNum';
+    private $_elementSetName = 'refNum';
 
+    /**
+     * @var array Hooks for the plugin.
+     */
     protected $_hooks = array(
         'install',
         'uninstall',
-        'admin_append_to_plugin_uninstall_message',
     );
 
+    /**
+     * Installs the plugin.
+     */
     public function hookInstall()
     {
         // Load elements to add.
         require_once('elements.php');
 
         // Don't install if an element set already exists.
-        if ($this->_getElementSet(self::ELEMENT_SET_NAME)) {
-            throw new Exception('An element set by the name "' . self::ELEMENT_SET_NAME . '" already exists. You must delete that element set to install this plugin.');
+        if ($this->_getElementSet($this->_elementSetName)) {
+            throw new Exception('An element set by the name "' . $this->_elementSetName . '" already exists. You must delete that element set to install this plugin.');
         }
 
         insert_element_set($elementSetMetadata, $elements);
     }
 
+    /**
+     * Uninstalls the plugin.
+     */
     public function hookUninstall()
     {
-        $this->_deleteElementSet(self::ELEMENT_SET_NAME);
-    }
-
-    /**
-     * Warns before the uninstallation of the plugin.
-     */
-    public function hookAdminAppendToPluginUninstallMessage()
-    {
-        echo '<p><strong>' . __('Warning') . '</strong>:'
-            . __('This will remove all the "' . self::ELEMENT_SET_NAME . '" elements added by this plugin and permanently delete all element texts entered in those fields.')
-            . '</p>';
+        $this->_deleteElementSet($this->_elementSetName);
     }
 
     private function _getElementSet($elementSetName)
@@ -69,7 +68,3 @@ class RefnumElementSetPlugin extends Omeka_Plugin_Abstract
         }
     }
 }
-
-/** Installation of the plugin. */
-$refnumElementSet = new RefnumElementSetPlugin();
-$refnumElementSet->setUp();

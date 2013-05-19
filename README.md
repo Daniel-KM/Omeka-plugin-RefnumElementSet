@@ -43,8 +43,8 @@ See online issues on [GitHub][4].
 License
 -------
 
-This plugin is published under the [CeCILL v2][3] licence, compatible with
-[GNU/GPL][4].
+This plugin is published under the [CeCILL v2][5] licence, compatible with
+[GNU/GPL][6].
 
 In consideration of access to the source code and the rights to copy,
 modify and redistribute granted by the license, users are provided only
@@ -72,7 +72,7 @@ Current maintainers:
 
 * Daniel Berthereau (see [Daniel-KM][7])
 
-First version of this plugin has been built for [École des Ponts ParisTech][6].
+First version of this plugin has been built for [École des Ponts ParisTech][8].
 
 
 Copyright
@@ -85,7 +85,7 @@ Copyright
 [2]: http://www.bnf.fr "Bibliothèque nationale de France"
 [3]: http://www.omeka.org "Omeka.org"
 [4]: https://github.com/Daniel-KM/RefnumElementSet/Issues "GitHub refNum Element Set"
-[5]: http://www.cecill.info/licences/Licence_CeCILL_V2-en.html "CeCILL"
-[6]: https://www.gnu.org/licenses/gpl-3.0.html "GNU/GPL"
+[5]: http://www.cecill.info/licences/Licence_CeCILL_V2-en.html "CeCILL v2"
+[6]: https://www.gnu.org/licenses/gpl-3.0.html "GNU/GPL v3"
 [7]: http://github.com/Daniel-KM "Daniel Berthereau"
 [8]: http://bibliotheque.enpc.fr "École des Ponts ParisTech / ENPC"
