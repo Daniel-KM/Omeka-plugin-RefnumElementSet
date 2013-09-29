@@ -1,20 +1,25 @@
 <?php
 /**
- * Creates a file element set for refNum, a standard for digitalized documents,
- * especially books and manuscripts (see http://bibnum.bnf.fr/refNum).
+ * refNum Element Set
  *
- * @note Are added only metadata that can't be replaced by a Dublin Core element
- * and that are useful for École des Ponts.
+ * Creates a file element set for refNum, a standard for digitalized documents,
+ * especially books and manuscripts.
+ *
+ * @note Are added only metadata that can't be replaced by a Dublin Core
+ * element and that are useful for Omeka.
  *
  * @copyright Daniel Berthereau, 2012-2013
  * @license http://www.cecill.info/licences/Licence_CeCILL_V2-en.txt
  * @see http://bibnum.bnf.fr/refNum
- * @package RefnumElementSet
- **/
+ */
 
+/**
+ * The Refnum Element Set plugin.
+ * @package Omeka\Plugins\RefnumElementSet
+ */
 class RefnumElementSetPlugin extends Omeka_Plugin_AbstractPlugin
 {
-    private $_elementSetName = 'refNum';
+    const DEFAULT_ELEMENT_SET = 'Item Type Metadata';
 
     /**
      * @var array Hooks for the plugin.
@@ -30,14 +35,22 @@ class RefnumElementSetPlugin extends Omeka_Plugin_AbstractPlugin
     public function hookInstall()
     {
         // Load elements to add.
-        require_once('elements.php');
+        require_once 'elements.php';
 
-        // Don't install if an element set already exists.
-        if ($this->_getElementSet($this->_elementSetName)) {
-            throw new Exception('An element set by the name "' . $this->_elementSetName . '" already exists. You must delete that element set to install this plugin.');
+        // Checks.
+        if (isset($elementSetMetadata) && !empty($elementSetMetadata)) {
+            $elementSetName = $elementSetMetadata['name'];
+
+            // Don't install if the element set already exists.
+            if ($this->_getElementSet($elementSetName)) {
+                throw new Exception('An element set by the name "' . $elementSetName . '" already exists. You must delete that element set before to install this plugin.');
+            }
         }
 
-        insert_element_set($elementSetMetadata, $elements);
+        // Process.
+        if (isset($elementSetMetadata) && !empty($elementSetMetadata)) {
+            insert_element_set($elementSetMetadata, $elements);
+        }
     }
 
     /**
@@ -45,7 +58,13 @@ class RefnumElementSetPlugin extends Omeka_Plugin_AbstractPlugin
      */
     public function hookUninstall()
     {
-        $this->_deleteElementSet($this->_elementSetName);
+        // Load elements to remove.
+        require_once 'elements.php';
+
+        if (isset($elementSetMetadata) && !empty($elementSetMetadata)) {
+            $elementSetName = $elementSetMetadata['name'];
+            $this->_deleteElementSet($elementSetName);
+        }
     }
 
     private function _getElementSet($elementSetName)
