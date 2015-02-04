@@ -36,7 +36,7 @@ class RefnumElementSetPlugin extends Omeka_Plugin_AbstractPlugin
     public function hookInstall()
     {
         // Load elements to add.
-        require_once 'elements.php';
+        require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'elements.php';
 
         // Checks.
         if (isset($elementSetMetadata) && !empty($elementSetMetadata)) {
@@ -68,7 +68,7 @@ class RefnumElementSetPlugin extends Omeka_Plugin_AbstractPlugin
 
         if (version_compare($oldVersion, '2.2', '<')) {
             // Load elements to update.
-            include 'elements.php';
+            require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'elements.php';
 
             // Manage new names exceptions.
             foreach (array(
@@ -92,7 +92,7 @@ class RefnumElementSetPlugin extends Omeka_Plugin_AbstractPlugin
     protected function _updateElements()
     {
         // Load elements.
-        include 'elements.php';
+        require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'elements.php';
 
         $elementSet = get_record('ElementSet', array('name' => $elementSetMetadata['name']));
 
@@ -144,7 +144,7 @@ class RefnumElementSetPlugin extends Omeka_Plugin_AbstractPlugin
     public function hookUninstall()
     {
         // Load elements to remove.
-        require_once 'elements.php';
+        require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'elements.php';
 
         if (isset($elementSetMetadata) && !empty($elementSetMetadata)) {
             $elementSetName = $elementSetMetadata['name'];
@@ -152,6 +152,9 @@ class RefnumElementSetPlugin extends Omeka_Plugin_AbstractPlugin
         }
     }
 
+    /**
+     * Helper to get an element set.
+     */
     private function _getElementSet($elementSetName)
     {
         return $this->_db
@@ -159,6 +162,9 @@ class RefnumElementSetPlugin extends Omeka_Plugin_AbstractPlugin
             ->findByName($elementSetName);
     }
 
+    /**
+     * Helper to remove an element.
+     */
     private function _deleteElementSet($elementSetName)
     {
         $elementSet = $this->_getElementSet($elementSetName);
