@@ -8,6 +8,7 @@ $elementSetMetadata = array(
 // Attention : contrairement à DublinCore Extended, on utilise réellement les
 // noms et non les labels.
 $elements = array(
+    // Champs généraux.
     array(
         // 'name' => 'identifiant',
         'name' => 'Identifiant refNum',
@@ -33,7 +34,48 @@ $elements = array(
         'data_type' => 'Tiny Text',
         'description' => 'Permet de faire référence à une autre édition du document courant (cas de document en mode texte de la revue de synthèse également numérisé)',
     ),
-     // Commentaires ou signalement d'une page particulière.
+
+    // Bibliographie
+    // Utilisation du Dublin Core.
+
+    // Production.
+    // Seulement certains champs (Dublin Core pour les autres).
+
+    // L'ensemble du champ Historique est récupéré en une fois.
+    // Non utilisé actuellement : c'est au niveau Item.
+    /*
+    array(
+        // 'name' => 'HistoriqueProduction',
+        'name' => 'Historique de production',
+        'label' => 'Historique de production',
+        'record_type' => 'File',
+        'data_type' => 'Date',
+        'description' => 'Historique de production (XML)',
+    ),
+    */
+
+    // Correspond au champ d’image par défaut "Capture date", mais moins précis.
+    array(
+        // 'name' => 'dateNumérisation',
+        'name' => 'Date de numérisation',
+        'label' => 'Date de numérisation',
+        'record_type' => 'File',
+        'data_type' => 'Date',
+        'description' => 'Date de la numérisation',
+    ),
+    // Actuellement, un seul objet associé est géré.
+    array(
+        // 'name' => 'objetAssocié',
+        'name' => 'Objet associé',
+        'label' => 'Objet associé',
+        'record_type' => 'File',
+        'data_type' => 'Tiny Text',
+        'description' => 'Type de l’éventuel objet associé (Alto, TDM, Text)',
+    ),
+
+    // Structure.
+
+    // Commentaires ou signalement d'une page particulière.
     array(
         // 'name' => 'commentaire',
         'name' => 'Commentaire',
@@ -42,13 +84,22 @@ $elements = array(
         'data_type' => 'Tiny Text',
         'description' => 'Pour signaler une particularité de la vue, une information de traitement ou une page intéréssante',
     ),
+    // Correspond au champ de fichier par défaut "order" (ordre).
     array(
-        // 'name' => 'typePage',
-        'name' => 'Type de page',
-        'label' => 'Type de page',
+        // 'name' => "numOrdre",
+        'name' => 'Numéro d’ordre',
+        'label' => 'Numéro d’ordre',
         'record_type' => 'File',
         'data_type' => 'Tiny Text',
-        'description' => 'Permet d’identifier le contenu des pages d’un document : titre, index, première page à afficher, etc.',
+        'description' => 'Numéro d’ordre de l’image en cours dans le document',
+    ),
+    array(
+        // 'name' => 'numPage',
+        'name' => 'Numéro de page',
+        'label' => 'Numéro de page',
+        'record_type' => 'File',
+        'data_type' => 'Tiny Text',
+        'description' => 'Numéro de page réel ou induit, au format original (sauf pour les chiffres romains, convertis en chiffres arabes conformément à refNum)',
     ),
     array(
         // 'name' => 'typePagination',
@@ -59,41 +110,12 @@ $elements = array(
         'description' => 'Permet de catégoriser le format du numéro de page : sans pagination, en chiffres arabes, en chiffres romains, par foliotation ou autres cas',
     ),
     array(
-        // 'name' => 'numPage',
-        'name' => 'Numéro de page',
-        'label' => 'Numéro de page',
+        // 'name' => 'typePage',
+        'name' => 'Type de page',
+        'label' => 'Type de page',
         'record_type' => 'File',
         'data_type' => 'Tiny Text',
-        'description' => 'Numéro de page réel ou induit, au format original (sauf pour les chiffres romains, convertis en chiffres arabes conformément à refNum)',
-    ),
-    /* Supprimé dans v2.0, car doublon avec Dublin Core:Title.
-    array(
-        // 'name' => 'nomPage',
-        'name' => 'Nom de page',
-        'label' => 'Nom de page',
-        'record_type' => 'File',
-        'data_type' => 'Tiny Text',
-        'description' => 'Correspond au numéro de page lorsqu’il existe et sinon à un numéro calculé à partir de la position de l’image dans l’ensemble du document (les chiffres romains ne sont pas convertis)',
-    ),
-     */
-    // Correspond au champ de fichier par défaut "order" (ordre).
-    array(
-        // 'name' => "numOrdre",
-        'name' => 'Numéro d’ordre',
-        'label' => 'Numéro d’ordre',
-        'record_type' => 'File',
-        'data_type' => 'Tiny Text',
-        'description' => 'Numéro d’ordre de l’image en cours dans le document',
-    ),
-    // Plusieurs vues pour une même page, par exemple les popups, les calques,
-    // les demi-dépliants...
-    array(
-        // 'name' => "nombreVues",
-        'name' => 'Nombre vues',
-        'label' => 'Nombre vues',
-        'record_type' => 'File',
-        'data_type' => 'Tiny Text',
-        'description' => 'Indique que plusieurs images correspondent à une même page (1 par défaut)',
+        'description' => 'Permet d’identifier le contenu des pages d’un document : titre, index, première page à afficher, etc.',
     ),
     // Position réelle de l'objet dans l'espace du document : gauche, droite,
     // haut, bas, horizontal, vertical, unique, blanche, autre. Facilite
@@ -118,33 +140,15 @@ $elements = array(
         'data_type' => 'Integer',
         'description' => 'Écart entre le sens de feuilletage et le sens de lecture',
     ),
-    // Correspond au champ de notice par défaut "Original format" (pour les
-    // images) ou Dublin Core Medium, mais au niveau de chaque fichier.
+    // Plusieurs vues pour une même page, par exemple les popups, les calques,
+    // les demi-dépliants...
     array(
-        // 'name' => 'supportOriginal',
-        'name' => 'Support d’origine',
-        'label' => 'Support d’origine',
+        // 'name' => "nombreVues",
+        'name' => 'Nombre vues',
+        'label' => 'Nombre vues',
         'record_type' => 'File',
         'data_type' => 'Tiny Text',
-        'description' => 'Type de support du document original',
-    ),
-    // Correspond au champ d’image par défaut "Capture date", mais moins précis.
-    array(
-        // 'name' => 'dateNumérisation',
-        'name' => 'Date de numérisation',
-        'label' => 'Date de numérisation',
-        'record_type' => 'File',
-        'data_type' => 'Date',
-        'description' => 'Date de la numérisation',
-    ),
-    // Actuellement, un seul objet associé est géré.
-    array(
-        // 'name' => 'objetAssocié',
-        'name' => 'Objet associé',
-        'label' => 'Objet associé',
-        'record_type' => 'File',
-        'data_type' => 'Tiny Text',
-        'description' => 'Type de l’éventuel objet associé (Alto, TDM, Text)',
+        'description' => 'Indique que plusieurs images correspondent à une même page (1 par défaut)',
     ),
     // La legende est utilisée pour les lots d'images surtout.
     array(
@@ -154,6 +158,26 @@ $elements = array(
         'record_type' => 'File',
         'data_type' => 'Text',
         'description' => 'Légende de l’image',
+    ),
+    /* Supprimé dans v2.0, car doublon avec Dublin Core:Title.
+    array(
+        // 'name' => 'nomPage',
+        'name' => 'Nom de page',
+        'label' => 'Nom de page',
+        'record_type' => 'File',
+        'data_type' => 'Tiny Text',
+        'description' => 'Correspond au numéro de page lorsqu’il existe et sinon à un numéro calculé à partir de la position de l’image dans l’ensemble du document (les chiffres romains ne sont pas convertis)',
+    ),
+     */
+    // Correspond au champ de notice par défaut "Original format" (pour les
+    // images) ou Dublin Core Medium, mais au niveau de chaque fichier.
+    array(
+        // 'name' => 'supportOriginal',
+        'name' => 'Support d’origine',
+        'label' => 'Support d’origine',
+        'record_type' => 'File',
+        'data_type' => 'Tiny Text',
+        'description' => 'Type de support du document original',
     ),
     array(
         // 'name' => 'Traitement',
