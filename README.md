@@ -14,8 +14,8 @@ created by [Bibliothèque nationale de France], the French national library.
 
 **Note**: refNum standard is not totally implemented: only items useful for
 Omeka are added. Furthermore, since release 2.2, it adds new fields to refNum
-too in order to allow a correct display with [BookReader] ("Position de la vue",
-"Vue multiple" and "Orientation").
+too in order to allow a correct display with [BookReader] ("Position de la page",
+"Nombre vues" and "Orientation").
 
 This plugin can be used in conjunction with the [OCR Element Set] plugin, that
 allows to save OCR informations and texts about each page described by refNum.
