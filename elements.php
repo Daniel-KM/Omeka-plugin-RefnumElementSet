@@ -5,13 +5,10 @@ $elementSetMetadata = array(
     'record_type' => 'File',
 );
 
-// Attention : contrairement à DublinCore Extended, on utilise réellement les
-// noms et non les labels.
 $elements = array(
     // Champs généraux.
     array(
-        // 'name' => 'identifiant',
-        'name' => 'Identifiant refNum',
+        'name' => 'identifiant',
         'label' => 'Identifiant refNum',
         'record_type' => 'File',
         'data_type' => 'Tiny Text',
@@ -19,16 +16,14 @@ $elements = array(
     ),
     // Champ indéfini dans le schéma.
     array(
-        // 'name' => 'numper',
-        'name' => 'Numper',
+        'name' => 'numper',
         'label' => 'Numéro périodique',
         'record_type' => 'File',
         'data_type' => 'Tiny Text',
         'description' => 'Numéro de périodique',
     ),
     array(
-        // 'name' => 'identifiantAutreVersion',
-        'name' => 'Identifiant autre version',
+        'name' => 'identifiantAutreVersion',
         'label' => 'Identifiant autre version',
         'record_type' => 'File',
         'data_type' => 'Tiny Text',
@@ -45,8 +40,7 @@ $elements = array(
     // Non utilisé actuellement : c'est au niveau Item.
     /*
     array(
-        // 'name' => 'HistoriqueProduction',
-        'name' => 'Historique de production',
+        'name' => 'productionHistorique',
         'label' => 'Historique de production',
         'record_type' => 'File',
         'data_type' => 'Date',
@@ -56,8 +50,7 @@ $elements = array(
 
     // Correspond au champ d’image par défaut "Capture date", mais moins précis.
     array(
-        // 'name' => 'dateNumérisation',
-        'name' => 'Date de numérisation',
+        'name' => 'dateNumerisation',
         'label' => 'Date de numérisation',
         'record_type' => 'File',
         'data_type' => 'Date',
@@ -65,8 +58,7 @@ $elements = array(
     ),
     // Actuellement, un seul objet associé est géré.
     array(
-        // 'name' => 'objetAssocié',
-        'name' => 'Objet associé',
+        'name' => 'objetAssocie',
         'label' => 'Objet associé',
         'record_type' => 'File',
         'data_type' => 'Tiny Text',
@@ -77,8 +69,7 @@ $elements = array(
 
     // Commentaires ou signalement d'une page particulière.
     array(
-        // 'name' => 'commentaire',
-        'name' => 'Commentaire',
+        'name' => 'commentaire',
         'label' => 'Commentaire',
         'record_type' => 'File',
         'data_type' => 'Tiny Text',
@@ -86,32 +77,28 @@ $elements = array(
     ),
     // Correspond au champ de fichier par défaut "order" (ordre).
     array(
-        // 'name' => "numOrdre",
-        'name' => 'Numéro d’ordre',
+        'name' => "ordre",
         'label' => 'Numéro d’ordre',
         'record_type' => 'File',
         'data_type' => 'Tiny Text',
         'description' => 'Numéro d’ordre de l’image en cours dans le document',
     ),
     array(
-        // 'name' => 'numPage',
-        'name' => 'Numéro de page',
+        'name' => 'numeroPage',
         'label' => 'Numéro de page',
         'record_type' => 'File',
         'data_type' => 'Tiny Text',
         'description' => 'Numéro de page réel ou induit, au format original (sauf pour les chiffres romains, convertis en chiffres arabes conformément à refNum)',
     ),
     array(
-        // 'name' => 'typePagination',
-        'name' => 'Type de pagination',
+        'name' => 'typePagination',
         'label' => 'Type de pagination',
         'record_type' => 'File',
         'data_type' => 'Tiny Text',
         'description' => 'Permet de catégoriser le format du numéro de page : sans pagination, en chiffres arabes, en chiffres romains, par foliotation ou autres cas',
     ),
     array(
-        // 'name' => 'typePage',
-        'name' => 'Type de page',
+        'name' => 'typePage',
         'label' => 'Type de page',
         'record_type' => 'File',
         'data_type' => 'Tiny Text',
@@ -123,8 +110,7 @@ $elements = array(
     // Horizontal et vertical sont utilisées pour les vues uniques de plusieurs
     // pages (généralement doubles pour les revues).
     array(
-        // 'name' => "positionPage",
-        'name' => 'Position de la page',
+        'name' => "positionPage",
         'label' => 'Position de la page',
         'record_type' => 'File',
         'data_type' => 'Tiny Text',
@@ -133,8 +119,7 @@ $elements = array(
     // Permet le redressement éventuel des images, utile au cas où les images
     // sont mal orientées et où l'information n'est pas dans l'image.
     array(
-        // 'name' => 'orientation',
-        'name' => 'Orientation',
+        'name' => 'orientation',
         'label' => 'Orientation',
         'record_type' => 'File',
         'data_type' => 'Integer',
@@ -143,8 +128,7 @@ $elements = array(
     // Plusieurs vues pour une même page, par exemple les popups, les calques,
     // les demi-dépliants...
     array(
-        // 'name' => "nombreVues",
-        'name' => 'Nombre vues',
+        'name' => "nombreVues",
         'label' => 'Nombre vues',
         'record_type' => 'File',
         'data_type' => 'Tiny Text',
@@ -152,8 +136,7 @@ $elements = array(
     ),
     // La legende est utilisée pour les lots d'images surtout.
     array(
-        // 'name' => 'Légende',
-        'name' => 'Légende',
+        'name' => 'legende',
         'label' => 'Légende',
         'record_type' => 'File',
         'data_type' => 'Text',
@@ -161,8 +144,7 @@ $elements = array(
     ),
     /* Supprimé dans v2.0, car doublon avec Dublin Core:Title.
     array(
-        // 'name' => 'nomPage',
-        'name' => 'Nom de page',
+        'name' => 'nomPage',
         'label' => 'Nom de page',
         'record_type' => 'File',
         'data_type' => 'Tiny Text',
@@ -172,24 +154,21 @@ $elements = array(
     // Correspond au champ de notice par défaut "Original format" (pour les
     // images) ou Dublin Core Medium, mais au niveau de chaque fichier.
     array(
-        // 'name' => 'supportOriginal',
-        'name' => 'Support d’origine',
+        'name' => 'supportOrigine',
         'label' => 'Support d’origine',
         'record_type' => 'File',
         'data_type' => 'Tiny Text',
         'description' => 'Type de support du document original',
     ),
     array(
-        // 'name' => 'Traitement',
-        'name' => 'Traitement',
+        'name' => 'traitement',
         'label' => 'Traitement',
         'record_type' => 'File',
         'data_type' => 'Text',
         'description' => 'Traitement',
     ),
     array(
-        // 'name' => 'Cadrage',
-        'name' => 'Cadrage',
+        'name' => 'cadrage',
         'label' => 'Cadrage',
         'record_type' => 'File',
         'data_type' => 'Tiny Text',
@@ -198,8 +177,7 @@ $elements = array(
     // Le prestataire est le producteur de l’image. A l’ENPC, il est défini par
     // le premier élément du nom du fichier (ENPC01_ ...).
     array(
-        // 'name' => 'Prestataire',
-        'name' => 'Prestataire',
+        'name' => 'prestataire',
         'label' => 'Prestataire',
         'record_type' => 'File',
         'data_type' => 'Tiny Text',

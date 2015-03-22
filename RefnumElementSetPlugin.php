@@ -50,6 +50,9 @@ class RefnumElementSetPlugin extends Omeka_Plugin_AbstractPlugin
 
         // Process.
         if (isset($elementSetMetadata) && !empty($elementSetMetadata)) {
+            foreach ($elements as &$element) {
+                $element['name'] = $element['label'];
+            }
             insert_element_set($elementSetMetadata, $elements);
         }
     }
@@ -122,7 +125,7 @@ class RefnumElementSetPlugin extends Omeka_Plugin_AbstractPlugin
             $flagElement = false;
             foreach ($elements as $order => $element) {
                 // Update existing.
-                if ($currentElement->name == $element['name']) {
+                if ($currentElement->name == $element['label']) {
                     foreach ($element as $elementProperty) {
                         $currentElement->$elementProperty = $elementProperty;
                     }
@@ -144,7 +147,7 @@ class RefnumElementSetPlugin extends Omeka_Plugin_AbstractPlugin
         foreach ($elements as $order => $element) {
             $flagElement = false;
             foreach ($currentElements as $currentElement) {
-                if ($currentElement->name == $element['name']) {
+                if ($currentElement->name == $element['label']) {
                     $flagElement = true;
                     break;
                 }
