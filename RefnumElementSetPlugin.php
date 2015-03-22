@@ -84,6 +84,26 @@ class RefnumElementSetPlugin extends Omeka_Plugin_AbstractPlugin
 
             $this->_updateElements();
         }
+
+        if (version_compare($oldVersion, '2.2.1', '<')) {
+            // Load elements to update.
+            require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'elements.php';
+
+            // Manage new names exceptions.
+            foreach (array(
+                    'Identifiant du document' => 'Identifiant refNum',
+                    'Vue multiple' => 'Nombre vues',
+                    'Position de la vue' => 'Position de la page',
+                ) as $elementName => $newElementName) {
+                $element = $this->_db->getTable('Element')->findByElementSetNameAndElementName($elementSetMetadata['name'], $elementName);
+                if ($element) {
+                    $element->name = $newElementName;
+                    $element->save();
+                }
+            }
+
+            $this->_updateElements();
+        }
     }
 
     /**
@@ -92,7 +112,7 @@ class RefnumElementSetPlugin extends Omeka_Plugin_AbstractPlugin
     protected function _updateElements()
     {
         // Load elements.
-        require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'elements.php';
+        require dirname(__FILE__) . DIRECTORY_SEPARATOR . 'elements.php';
 
         $elementSet = get_record('ElementSet', array('name' => $elementSetMetadata['name']));
 
