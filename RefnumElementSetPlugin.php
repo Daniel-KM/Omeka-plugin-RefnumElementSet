@@ -125,7 +125,8 @@ class RefnumElementSetPlugin extends Omeka_Plugin_AbstractPlugin
             $flagElement = false;
             foreach ($elements as $order => $element) {
                 // Update existing.
-                if ($currentElement->name == $element['label']) {
+                $element['name'] = $element['label'];
+                if ($currentElement->name == $element['name']) {
                     foreach ($element as $elementProperty) {
                         $currentElement->$elementProperty = $elementProperty;
                     }
@@ -145,9 +146,10 @@ class RefnumElementSetPlugin extends Omeka_Plugin_AbstractPlugin
         // Add new elements.
         $currentElements = $elementSet->getElements();
         foreach ($elements as $order => $element) {
+            $element['name'] = $element['label'];
             $flagElement = false;
             foreach ($currentElements as $currentElement) {
-                if ($currentElement->name == $element['label']) {
+                if ($currentElement->name == $element['name']) {
                     $flagElement = true;
                     break;
                 }

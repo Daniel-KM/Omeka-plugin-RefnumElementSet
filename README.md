@@ -107,7 +107,7 @@ Copyright
 [Omeka]: https://omeka.org
 [refNum]: http://bibnum.bnf.fr/refNum
 [Bibliothèque nationale de France]: http://www.bnf.fr
-[RefnumElementSet issues]: https://github.com/Daniel-KM/RefnumElementSet/Issues
+[RefnumElementSet issues]: https://github.com/Daniel-KM/RefnumElementSet/issues
 [adminer]: http://www.adminer.org
 [phpMyAdmin]: http://www.phpmyadmin.net
 [OCR Element Set]: https://github.com/Daniel-KM/OcrElementSet
