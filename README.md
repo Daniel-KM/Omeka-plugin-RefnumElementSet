@@ -20,6 +20,11 @@ too in order to allow a correct display with [BookReader] ("Position de la page"
 This plugin can be used in conjunction with the [OCR Element Set] plugin, that
 allows to save OCR informations and texts about each page described by refNum.
 
+For the import of metadata, it is recommended to convert files into [Mets], the
+format that is now used. A script can do it automatically: [refNum2Mets]. Then,
+the plugin [ArchiveFolder] will import all metadata that Omeka can manage and
+that are needed for the [BookReader].
+
 
 Installation
 ------------
@@ -54,8 +59,8 @@ Warning
 
 Use it at your own risk.
 
-It's always recommended to backup your files and database so you can roll back
-if needed.
+It's always recommended to backup your files and database regularly so you can
+roll back if needed.
 
 
 Troubleshooting
@@ -111,6 +116,9 @@ Copyright
 [adminer]: http://www.adminer.org
 [phpMyAdmin]: http://www.phpmyadmin.net
 [OCR Element Set]: https://github.com/Daniel-KM/OcrElementSet
+[Mets]: https://www.loc.gov/standards/mets
+[refNum2Mets]: https://github.com/Daniel-KM/refNum2Mets
+[ArchiveFolder]: https://github.com/Daniel-KM/ArchiveFolder
 [BookReader]: https://github.com/Daniel-KM/BookReader
 [CeCILL v2.1]: https://www.cecill.info/licences/Licence_CeCILL_V2.1-en.html
 [GNU/GPL]: https://www.gnu.org/licenses/gpl-3.0.html "GNU/GPL v3"
