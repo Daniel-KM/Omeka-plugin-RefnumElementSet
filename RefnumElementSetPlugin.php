@@ -28,6 +28,7 @@ class RefnumElementSetPlugin extends Omeka_Plugin_AbstractPlugin
         'install',
         'upgrade',
         'uninstall',
+        'uninstall_message',
     );
 
     /**
@@ -44,7 +45,7 @@ class RefnumElementSetPlugin extends Omeka_Plugin_AbstractPlugin
 
             // Don't install if the element set already exists.
             if ($this->_getElementSet($elementSetName)) {
-                throw new Exception('An element set by the name "' . $elementSetName . '" already exists. You must delete that element set before to install this plugin.');
+                throw new Omeka_Plugin_Exception('An element set by the name "' . $elementSetName . '" already exists. You must delete that element set before to install this plugin.');
             }
         }
 
@@ -66,7 +67,7 @@ class RefnumElementSetPlugin extends Omeka_Plugin_AbstractPlugin
         $newVersion = $args['new_version'];
 
         if (version_compare($oldVersion, '2.1', '<')) {
-            throw new Exception('No upgrade can be done automatically with release prior to 2.1. See ReadMe.');
+            throw new Omeka_Plugin_Exception('No upgrade can be done automatically with release prior to 2.1. See ReadMe.');
         }
 
         if (version_compare($oldVersion, '2.2', '<')) {
@@ -127,8 +128,8 @@ class RefnumElementSetPlugin extends Omeka_Plugin_AbstractPlugin
                 // Update existing.
                 $element['name'] = $element['label'];
                 if ($currentElement->name == $element['name']) {
-                    foreach ($element as $elementProperty) {
-                        $currentElement->$elementProperty = $elementProperty;
+                    foreach ($element as $elementPropertyName => $elementProperty) {
+                        $currentElement->$elementPropertyName = $elementProperty;
                     }
                     // Order starts from one.
                     // $currentElement->order = ++$order;
@@ -175,6 +176,16 @@ class RefnumElementSetPlugin extends Omeka_Plugin_AbstractPlugin
             $elementSetName = $elementSetMetadata['name'];
             $this->_deleteElementSet($elementSetName);
         }
+    }
+
+    /**
+     * Display the uninstall message.
+     */
+    public function hookUninstallMessage()
+    {
+        echo __('%sWarning%s: This will remove all the Refnum elements added '
+        . 'by this plugin and permanently delete all element texts entered in those '
+        . 'fields.%s', '<p><strong>', '</strong>', '</p>');
     }
 
     /**

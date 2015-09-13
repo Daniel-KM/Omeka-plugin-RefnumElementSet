@@ -101,7 +101,7 @@ and has been upgraded for [Lektum] and [Mines ParisTech].
 Copyright
 ---------
 
-* Copyright Daniel Berthereau, 2012-2014
+* Copyright Daniel Berthereau, 2012-2015
 
 
 [Omeka]: https://omeka.org
@@ -112,7 +112,7 @@ Copyright
 [phpMyAdmin]: http://www.phpmyadmin.net
 [OCR Element Set]: https://github.com/Daniel-KM/OcrElementSet
 [BookReader]: https://github.com/Daniel-KM/BookReader
-[CeCILL v2.1]: http://www.cecill.info/licences/Licence_CeCILL_V2.1-en.html
+[CeCILL v2.1]: https://www.cecill.info/licences/Licence_CeCILL_V2.1-en.html
 [GNU/GPL]: https://www.gnu.org/licenses/gpl-3.0.html "GNU/GPL v3"
 [FSF]: https://www.fsf.org
 [OSI]: http://opensource.org
