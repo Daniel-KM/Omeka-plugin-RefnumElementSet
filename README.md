@@ -2,9 +2,6 @@ refNum Element Set (plugin for Omeka)
 =====================================
 
 
-Summary
--------
-
 This plugin for [Omeka] creates a file element set for the refNum standard and
 adds the metadata that can't be replaced by a Dublin Core element.
 
@@ -20,10 +17,23 @@ too in order to allow a correct display with [BookReader] ("Position de la page"
 This plugin can be used in conjunction with the [OCR Element Set] plugin, that
 allows to save OCR informations and texts about each page described by refNum.
 
-For the import of metadata, it is recommended to convert files into [Mets], the
-format that is now used. A script can do it automatically: [refNum2Mets]. Then,
-the plugin [ArchiveFolder] will import all metadata that Omeka can manage and
-that are needed for the [BookReader].
+
+Important
+---------
+
+In December 2014, the [Bibliothèque nationale de France] deprecated the format
+refNum in favor of [Mets], so it is recommended to convert all refNum xml files.
+
+Regrettably, unlike other countries that have done a similar upgrade (for
+example the MAG format in Italy), this public institution doesn't provide the
+xsl sheets that it uses internally, so a script has been built to do it
+automatically: [refNum2Mets].
+
+The plugins [Archive Folder] and [OAI-PMH Static Repository] will import all Mets
+metadata that Omeka can manage and that are needed for the [BookReader] or the
+[UniversalViewer].
+
+This plugin won't be maintened any more.
 
 
 Installation
@@ -106,7 +116,7 @@ and has been upgraded for [Lektum] and [Mines ParisTech].
 Copyright
 ---------
 
-* Copyright Daniel Berthereau, 2012-2015
+* Copyright Daniel Berthereau, 2012-2016
 
 
 [Omeka]: https://omeka.org
@@ -118,8 +128,10 @@ Copyright
 [OCR Element Set]: https://github.com/Daniel-KM/OcrElementSet
 [Mets]: https://www.loc.gov/standards/mets
 [refNum2Mets]: https://github.com/Daniel-KM/refNum2Mets
-[ArchiveFolder]: https://github.com/Daniel-KM/ArchiveFolder
+[Archive Folder]: https://github.com/Daniel-KM/ArchiveFolder
+[OAI-PMH Static Repository]: https://github.com/Daniel-KM/OaiPmhStaticRepository
 [BookReader]: https://github.com/Daniel-KM/BookReader
+[UniversalViewer]: https://github.com/Daniel-KM/UniversalViewer4Omeka
 [CeCILL v2.1]: https://www.cecill.info/licences/Licence_CeCILL_V2.1-en.html
 [GNU/GPL]: https://www.gnu.org/licenses/gpl-3.0.html "GNU/GPL v3"
 [FSF]: https://www.fsf.org
