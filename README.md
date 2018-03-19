@@ -69,8 +69,8 @@ Warning
 
 Use it at your own risk.
 
-It's always recommended to backup your files and database regularly so you can
-roll back if needed.
+It’s always recommended to backup your files and your databases and to check
+your archives regularly so you can roll back if needed.
 
 
 Troubleshooting
@@ -122,16 +122,16 @@ Copyright
 [Omeka]: https://omeka.org
 [refNum]: http://bibnum.bnf.fr/refNum
 [Bibliothèque nationale de France]: http://www.bnf.fr
-[RefnumElementSet issues]: https://github.com/Daniel-KM/RefnumElementSet/issues
+[RefnumElementSet issues]: https://github.com/Daniel-KM/Omeka-plugin-RefnumElementSet/issues
 [adminer]: http://www.adminer.org
 [phpMyAdmin]: http://www.phpmyadmin.net
-[OCR Element Set]: https://github.com/Daniel-KM/OcrElementSet
+[OCR Element Set]: https://github.com/Daniel-KM/Omeka-plugin-OcrElementSet
 [Mets]: https://www.loc.gov/standards/mets
 [refNum2Mets]: https://github.com/Daniel-KM/refNum2Mets
-[Archive Folder]: https://github.com/Daniel-KM/ArchiveFolder
-[OAI-PMH Static Repository]: https://github.com/Daniel-KM/OaiPmhStaticRepository
-[BookReader]: https://github.com/Daniel-KM/BookReader
-[UniversalViewer]: https://github.com/Daniel-KM/UniversalViewer4Omeka
+[Archive Folder]: https://github.com/Daniel-KM/Omeka-plugin-ArchiveFolder
+[OAI-PMH Static Repository]: https://github.com/Daniel-KM/Omeka-plugin-OaiPmhStaticRepository
+[BookReader]: https://github.com/Daniel-KM/Omeka-plugin-BookReader
+[UniversalViewer]: https://github.com/Daniel-KM/Omeka-plugin-UniversalViewer
 [CeCILL v2.1]: https://www.cecill.info/licences/Licence_CeCILL_V2.1-en.html
 [GNU/GPL]: https://www.gnu.org/licenses/gpl-3.0.html "GNU/GPL v3"
 [FSF]: https://www.fsf.org
